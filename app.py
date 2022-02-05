@@ -1,8 +1,11 @@
+import random
+
 from flask import Flask, request, jsonify, make_response
 import os
 import tensorflow as tf
 import tensorflow_io as tf_io
 from werkzeug.utils import secure_filename
+from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials, messaging
 from flask_pymongo import PyMongo
@@ -63,7 +66,8 @@ def predict():
 
         # Save the WAV file from the POST request
         base_path = os.path.dirname(__file__)
-        file_path = os.path.join(base_path, 'uploads', secure_filename(f.filename))
+        file_path = os.path.join(base_path, 'uploads',
+                                 secure_filename(str(random.random()) + ".wav"))
         f.save(file_path)
 
         print("FILE SAVED - PROCEEDING TO PREDICTION")
@@ -80,14 +84,14 @@ def predict():
         print("PREDICTED")
         print("PREDICTED RESULT - " + your_inferred_class)
 
-        # if your_inferred_class == "dog":
-        #     send_notification("Sound Detected!", "A dog had been heard barking", tokens)
-        # elif your_inferred_class == "crying_baby":
-        #     send_notification("Sound Detected!", "A baby has been heard crying", tokens)
-        # elif your_inferred_class == "glass_breaking":
-        #     send_notification("Breaking of glass sound detected!", "Proceed with caution", tokens)
-        # elif your_inferred_class == "door_wood_knock":
-        #     send_notification("Sound Detected!", "Someone is heard knocking the door", tokens)
+        if your_inferred_class == "dog":
+            send_notification("Sound Detected!", "A dog had been heard barking", tokens)
+        elif your_inferred_class == "crying_baby":
+            send_notification("Sound Detected!", "A baby has been heard crying", tokens)
+        elif your_inferred_class == "glass_breaking":
+            send_notification("Breaking of glass sound detected!", "Proceed with caution", tokens)
+        elif your_inferred_class == "door_wood_knock":
+            send_notification("Sound Detected!", "Someone is heard knocking the door", tokens)
 
         return jsonify(content=your_inferred_class)
 
