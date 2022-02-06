@@ -1,18 +1,19 @@
-import random
-
+import base64
 from flask import Flask, request, jsonify, make_response
 import os
 import tensorflow as tf
 import tensorflow_io as tf_io
 from werkzeug.utils import secure_filename
-from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials, messaging
-from flask_pymongo import PyMongo
+import random
+import config.config as mongo_setup
+from models.user import *
+from mongoengine import *
+
+mongo_setup.global_init()
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/home_net'
-mongo = PyMongo(app)
 
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
@@ -86,10 +87,13 @@ def predict():
 
         if your_inferred_class == "dog":
             send_notification("Sound Detected!", "A dog had been heard barking", tokens)
+
         elif your_inferred_class == "crying_baby":
             send_notification("Sound Detected!", "A baby has been heard crying", tokens)
+
         elif your_inferred_class == "glass_breaking":
             send_notification("Breaking of glass sound detected!", "Proceed with caution", tokens)
+
         elif your_inferred_class == "door_wood_knock":
             send_notification("Sound Detected!", "Someone is heard knocking the door", tokens)
 
@@ -98,16 +102,36 @@ def predict():
 
 @app.route('/register-user', methods=['POST'])
 def register_user():
-    current_collection = mongo.db.users
-    email = request.json['email']
-    firstname = request.json['firstName']
-    lastname = request.json['lastName']
-    telephone = request.json['telephone']
+    if request.method == 'POST':
+        email = request.json['email']
+        firstname = request.json['firstname']
+        lastname = request.json['lastname']
+        telephone = request.json['telephone']
+        password = request.json['password'].encode("utf-8")
 
-    user = current_collection.insert(
-        {'email': email, 'firstname': firstname, 'lastname': lastname, 'telephone': telephone})
-    return make_response(jsonify(user), 200)
+        try:
+            user = User(
+                email=email,
+                firstname=firstname,
+                lastname=lastname,
+                telephone=telephone,
+                password=base64.b64encode(password)
+            ).save()
 
+            print(user.json())
+
+            return make_response(user.json(), 200)
+
+        except NotUniqueError:
+            return make_response(jsonify("Email already in use"), 400)
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        email = request.json['email']
+        password = request.json['password']
+        
 
 if __name__ == '__main__':
     app.run()
