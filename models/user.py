@@ -34,3 +34,20 @@ class Device(DynamicDocument):
     meta = {
         "indexes": ["iot_id"]
     }
+
+
+class History(DynamicDocument):
+    sound_inferred = StringField()
+    time = StringField()
+    iot_id = ReferenceField(Device)
+
+    def serialize(self):
+        history_dict = {
+            "sound": self.sound_inferred,
+            "time": self.time,
+        }
+        return json.dumps(history_dict)
+
+    meta = {
+        "indexes": ["time"]
+    }

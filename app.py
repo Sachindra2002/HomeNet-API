@@ -1,5 +1,7 @@
 import base64
-from flask import Flask, request, jsonify, make_response
+import json
+
+from flask import Flask, request, Response, jsonify, make_response
 import os
 import tensorflow as tf
 import tensorflow_io as tf_io
@@ -10,6 +12,7 @@ import random
 import config.config as mongo_setup
 from models.user import *
 from mongoengine import *
+from datetime import datetime
 
 mongo_setup.global_init()
 
@@ -18,8 +21,8 @@ app = Flask(__name__)
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
-tokens = ["d5rMjWX9SVicWEllSU2wrP:APA91bHuJhJH9d_gQjnp_MYLGjSnaXK1WWo45f3vyzPDamX2jcA1lqhXPixrkfvXO1CqDsvStaTDc57XvU8"
-          "-kW5MOTogPe_XZ_D5StDfv8Lo2q00x4mr48obuks4jKlGFljkUJfIQcn9"]
+tokens = ["e2XEzeIoTh-SWA2O9GiAVc"
+          ":APA91bFNjXJt432d1VWVFIcXktm_WLWWGzi2ka2iLY5GfxBQfJfSIKtpJV1JixcygrhimXqJy_l4XfQCAMUDcuRqEMMUF9QAolAhaPUOFcQSeW3KJ9VRiwg51aA7hxWywaD5NPK1gZfM"]
 
 saved_model_path = 'audio_recognition'
 reloaded_model = tf.saved_model.load(saved_model_path)
@@ -87,20 +90,48 @@ def predict():
 
         if your_inferred_class == "dog":
             send_notification("Sound Detected!", "A dog had been heard barking", tokens)
+            now = datetime.now()
+
+            current_time = now.strftime("%H:%M:%S")
+            History(
+                sound="Dog Bark",
+                time=current_time
+            ).save()
 
         elif your_inferred_class == "crying_baby":
             send_notification("Sound Detected!", "A baby has been heard crying", tokens)
+            now = datetime.now()
+
+            current_time = now.strftime("%H:%M:%S")
+            History(
+                sound="Baby Crying",
+                time=current_time
+            ).save()
 
         elif your_inferred_class == "glass_breaking":
             send_notification("Breaking of glass sound detected!", "Proceed with caution", tokens)
+            now = datetime.now()
+
+            current_time = now.strftime("%H:%M:%S")
+            History(
+                sound="Glass Breaking",
+                time=current_time
+            ).save()
 
         elif your_inferred_class == "door_wood_knock":
             send_notification("Sound Detected!", "Someone is heard knocking the door", tokens)
+            now = datetime.now()
+
+            current_time = now.strftime("%H:%M:%S")
+            History(
+                sound="Door Knocking",
+                time=current_time
+            ).save()
 
         return jsonify(content=your_inferred_class)
 
 
-@app.route('/register-user', methods=['POST'])
+@app.route('/api/register-user', methods=['POST'])
 def register_user():
     if request.method == 'POST':
         email = request.json['email']
@@ -123,15 +154,35 @@ def register_user():
             return make_response(user.json(), 200)
 
         except NotUniqueError:
-            return make_response(jsonify("Email already in use"), 400)
+            return make_response(json.dumps('Email already in use'), 400)
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/api/auth/login', methods=['POST'])
 def login():
     if request.method == 'POST':
         email = request.json['email']
-        password = request.json['password']
-        
+        password = request.json['password'].encode("utf-8")
 
-if __name__ == '__main__':
-    app.run()
+        user = User.objects(email=email).first()
+        print(user)
+        if user is None:
+            return make_response("User not found", 400)
+
+        if user:
+            print(user)
+            decoded_password = base64.b64decode(user.password)
+            if password == decoded_password:
+                return jsonify("success"), 200
+            else:
+                return make_response("error", 400)
+
+
+@app.route('/api/history', methods=['GET'])
+def history():
+    if request.method == 'GET':
+        print("get")
+        history_list = History.objects().to_json()
+        return make_response(history_list, 200)
+
+    if __name__ == '__main__':
+        app.run()
