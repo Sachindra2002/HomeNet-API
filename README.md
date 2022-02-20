@@ -15,11 +15,6 @@ The IOT device could be placed on certain areas of a house and once its installe
 Currently, this system can only recognize four types of sound, which are the sound of dogs barking which might indicate a person is trespassing, sound of glass breaking which might indicate an intruder, sound of door knocking which might indicate that someone has arrived and sound of a baby crying to wake up sleeping parents. Some of the above sounds may not indicate a threat to a house even though this project is about home security, but the beauty of the smart home is that it could be used much more than a security system and recognize sounds which are not direct threats but could be useful to the users.
 
 
-<p align="center">
-  <img width="300" src="https://user-images.githubusercontent.com/52739523/154853960-483ca32d-e532-4946-bf64-624f9d084a1e.png">
-   <img width="300" src="https://user-images.githubusercontent.com/52739523/154853969-46d2341e-a73b-4f71-b56e-b4c2b30038aa.png">
-</p>
-
 ![image](https://user-images.githubusercontent.com/52739523/154854366-ba953185-7526-40b7-985d-d1866b79359c.png)
 
 
