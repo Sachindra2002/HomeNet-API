@@ -20,5 +20,8 @@ Currently, this system can only recognize four types of sound, which are the sou
    <img width="300" src="https://user-images.githubusercontent.com/52739523/154853969-46d2341e-a73b-4f71-b56e-b4c2b30038aa.png">
 </p>
 
+![image](https://user-images.githubusercontent.com/52739523/154854337-e11ab1a1-0003-4e3b-8e7b-916764d8d62f.png)
+
+
 
 
