@@ -6,8 +6,8 @@ To solve the above issues, houses are fitted with advance security systems which
 As images and video data is the most promising and widely available data types to recognize context, images and video data can be affected by the line of sight and the cameras should be positioned towards a specific direction as it only has a field of view between 60° to 110° degrees which also does not provide full coverage.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/52739523/154853960-483ca32d-e532-4946-bf64-624f9d084a1e.png">
-   <img src="https://user-images.githubusercontent.com/52739523/154853969-46d2341e-a73b-4f71-b56e-b4c2b30038aa.png">
+  <img width="300" src="https://user-images.githubusercontent.com/52739523/154853960-483ca32d-e532-4946-bf64-624f9d084a1e.png">
+   <img width="300" src="https://user-images.githubusercontent.com/52739523/154853969-46d2341e-a73b-4f71-b56e-b4c2b30038aa.png">
 </p>
 
 
