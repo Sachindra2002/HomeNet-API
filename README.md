@@ -1,1 +1,3 @@
 # Problem
+
+Home Security is important for the protection and wellbeing of the people living in their houses and it is the first and foremost protection to the people’s property and those living inside it from a burglary, home intrusion and other environmental disasters. This further gives a peace of mind that your home is protected when you’re sleeping or away and with the modern wireless security systems, people can check in on their houses miles away using the internet. While security systems are a significance expense, the cost of a burglary averages $2,400 per victim and not to mention the psychological impact it can have. 
