@@ -1,3 +1,11 @@
+# Research
+
+This research mainly focuses on how natural sound-based context recognition can be applied on mainstream home security systems and the author thought about the possibilities of using sound to infer context and after some research the author found that the power of sound is often overlooked. Research also shows that enormous amount of context information can be deduced from sound. For example, the sound of fireworks may indicate that an event or a festival is going on, the sound of honking may indicate a traffic congestion nearby, a baby crying may indicate the baby is hungry, etc. the “noise” surrounding us is a very good indicator of context.
+
+Even though there is a huge potential of natural sound, there has not been a sound-based context recognition system for home security in the market. To find all the possibilities of using sound-based context recognition in home security, this research will also focus on finding and evaluating an efficient algorithm that can be used to recognize sound or audio.
+
+The main goal of this project is to recognize a certain set of sounds which can happen inside a house using the help of Machine Learning and Deep Learning to learn the differences between the sounds and what features it makes to form a specific sound. Various techniques and technologies will be used to develop this system and evaluate the performance and check what the best and apply it to the final product.
+
 # Problem
 
 Home Security is important for the protection and wellbeing of the people living in their houses and it is the first and foremost protection to the people’s property and those living inside it from a burglary, home intrusion and other environmental disasters. This further gives a peace of mind that your home is protected when you’re sleeping or away and with the modern wireless security systems, people can check in on their houses miles away using the internet. While security systems are a significance expense, the cost of a burglary averages $2,400 per victim and not to mention the psychological impact it can have. 
@@ -16,7 +24,3 @@ Currently, this system can only recognize four types of sound, which are the sou
 
 
 ![image](https://user-images.githubusercontent.com/52739523/154854366-ba953185-7526-40b7-985d-d1866b79359c.png)
-
-
-
-
