@@ -11,6 +11,7 @@ As images and video data is the most promising and widely available data types t
 
 <p align="center">
   <img width="460" height="300" src="https://user-images.githubusercontent.com/52739523/154853969-46d2341e-a73b-4f71-b56e-b4c2b30038aa.png">
+   <img width="460" height="300" src="https://user-images.githubusercontent.com/52739523/154853969-46d2341e-a73b-4f71-b56e-b4c2b30038aa.png">
 </p>
 
 
