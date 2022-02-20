@@ -5,5 +5,10 @@ Home Security is important for the protection and wellbeing of the people living
 To solve the above issues, houses are fitted with advance security systems which would contain CCTV cameras to capture and record various angles of the property and motion sensors to detect movements in particular sections of the property, while the above two are good ways in protecting and securing a property, it has some caveats to it.
 As images and video data is the most promising and widely available data types to recognize context, images and video data can be affected by the line of sight and the cameras should be positioned towards a specific direction as it only has a field of view between 60° to 110° degrees which also does not provide full coverage.
 
+![image](https://user-images.githubusercontent.com/52739523/154853960-483ca32d-e532-4946-bf64-624f9d084a1e.png)
+
+![image](https://user-images.githubusercontent.com/52739523/154853969-46d2341e-a73b-4f71-b56e-b4c2b30038aa.png)
+
+
 
 
