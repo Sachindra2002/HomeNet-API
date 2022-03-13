@@ -15,7 +15,7 @@ As images and video data is the most promising and widely available data types t
 
 # Solution
 
-a sound recognition API will be developed where it will have all the capabilities in identifying sound and more functions to cater the user experience. 
+A sound recognition API will be developed where it will have all the capabilities in identifying sound and more functions to cater the user experience. 
 To better demonstrate how this product can be applied to smart homes and its use cases, a Raspberry Pi will be used as an IOT device, and an Android mobile app will be developed around the implemented API. The IOT device will act as an input channel for recording natural sound, while the application will be used to connect the IOT device and get the alerts based on the sound detected.
 
 The IOT device could be placed on certain areas of a house and once its installed and connected the IOT device will continuously send audio data to the REST API, When the audio data arrives at the server, the audio data will be sent to the imported Machine Learning model, where the sound will be recognized. After the sound is recognized, based on the sound an alert will be sent to the users’ mobile using Firebase Cloud Messaging Services. Mongo DB will be used as the primary database to this system where it will store all user data and information of the IOT devices and will be used to determine which IOT device is associated with the user.
@@ -24,3 +24,32 @@ Currently, this system can only recognize four types of sound, which are the sou
 
 
 ![image](https://user-images.githubusercontent.com/52739523/154854366-ba953185-7526-40b7-985d-d1866b79359c.png)
+
+# Related Repositories
+
+- RESTful API Repository - [https://github.com/Sachindra2002/HomeNet-API](https://github.com/Sachindra2002/HomeNet-API)
+- Raspberry Pi Code - [https://github.com/Sachindra2002/HomeNet-Raspberry-Pi](https://github.com/Sachindra2002/HomeNet-Raspberry-Pi)
+- Jupyter Notebooks - `Not publicly available`
+
+# Neural Netowrks
+
+Two Neural Netowrks were trained as follows
+
+- 11 layer CNN model built from scratch to perform classification for four types of sounds
+- Sequential model built using transfer learning from the YAMNet pre-trained model and build a new sequential model to fit the new dataset
+
+# Technologies Used
+
+![ alt text ](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![ alt text ](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+![ alt text ](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![ alt text ](https://camo.githubusercontent.com/2667ec9ca32204207bf4b7e999a3d26874759a9b5aeec22ebb4682ce936d2955/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d4b6572617326636f6c6f723d443030303030266c6f676f3d4b65726173266c6f676f436f6c6f723d464646464646266c6162656c3d)
+![ alt text ](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![ alt text ](https://camo.githubusercontent.com/028e2fa50d07bd7e228b89255fa1bd5ad310d1b3d7c327f67e9510398a045272/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d416e64726f696426636f6c6f723d323232323232266c6f676f3d416e64726f6964266c6f676f436f6c6f723d334444433834266c6162656c3d)
+
+
+# Future Enhancements
+
+- Train a model to identify a huge vareity of sounds
+- Integrate home automation (Trigger actions when a certain sound is detected)
+- Only start recording when a sound is detected
